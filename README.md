@@ -18,7 +18,7 @@ others, or their own session, to keep Sonarr's and Radarr's torrents apart.
 #### Generating a password hash
 
 ```sh
-echo -n "change-me" | argon2 $(openssl rand -hex 16) -id -t 2 -m 16 -p 1 -e
+echo -n "your-super-secret-password" | argon2 $(openssl rand -hex 16) -id -t 2 -m 16 -p 1 -e
 ```
 
 ### Configuration
