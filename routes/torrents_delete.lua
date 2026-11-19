@@ -6,8 +6,14 @@ local M = {}
 function M.handler()
     return function(req, res, ctx)
         local fields = form.fields(req)
+        local allowed = ctx.user.allow_delete_files
+
+        if allowed == nil then
+            allowed = ctx.config.allow_delete_files == true
+        end
+
         local delete_files = form.is_true(fields.deleteFiles)
-        local keep_files = delete_files and not ctx.config.allow_delete_files
+        local keep_files = delete_files and not allowed
 
         local session_torrents = ctx.session:torrents()
 

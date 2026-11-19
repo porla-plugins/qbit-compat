@@ -78,7 +78,11 @@ return {
             password_hash = "$argon2id$v=19$m=65536,t=2,p=1$cmFuZG9tc2FsdDE2Y2hhcg$vlCnp+txDK2R9EAaM/P+wzocN1Wi/uMxT6dWn8tk8L8",
 
             -- the session for this login (default: the session above)
-            session = "sonarr"
+            session = "sonarr",
+
+            -- overrides allow_delete_files above for this login, in either
+            -- direction (default: the setting above)
+            allow_delete_files = true
         },
         radarr = {
             password_hash = "$argon2id$v=19$m=65536,t=2,p=1$cmFuZG9tc2FsdDE2Y2hhcg$vlCnp+txDK2R9EAaM/P+wzocN1Wi/uMxT6dWn8tk8L8"
