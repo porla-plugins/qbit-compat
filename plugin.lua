@@ -52,11 +52,19 @@ return {
                 error(string.format("qbit-compat user '%s' needs a password_hash", username))
             end
 
+            if user.allow_delete_files ~= nil and type(user.allow_delete_files) ~= "boolean" then
+                error(string.format("qbit-compat user '%s' needs allow_delete_files to be true or false", username))
+            end
+
             local session, session_name = auth.session_for(config, user)
 
             if not session then
                 error(string.format("qbit-compat user '%s' has no loaded session '%s'", username, session_name))
             end
+        end
+
+        if config.allow_delete_files ~= nil and type(config.allow_delete_files) ~= "boolean" then
+            error("qbit-compat needs allow_delete_files to be true or false")
         end
 
         if type(config.save_path) ~= "string" or config.save_path:sub(1, 1) ~= "/" then

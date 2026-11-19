@@ -7,6 +7,7 @@ local M = {}
 ---@class QbitContext
 ---@field config table
 ---@field session PoSessionHandle
+---@field user table
 
 ---@type table<string, { expires: integer, username: string }>
 local session_state = {}
@@ -96,7 +97,8 @@ function M.authed_route(config, handler)
 
         local ctx = {
             config = config,
-            session = session
+            session = session,
+            user = user
         }
 
         return handler(req, res, ctx)
